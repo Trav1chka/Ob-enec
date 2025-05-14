@@ -1,0 +1,62 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(168, 168, 168);
+}
+
+#logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#play{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#play button {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 15px 30px;
+    cursor: pointer;
+    border: 2px solid #007BFF;
+    background-color: transparent;
+    color: #007BFF;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#play button:hover {
+    background-color: #007BFF;
+    color: white;
+    border-color: #007BFF;
+}
+
+#play a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+#onas{
+    display: flex;
+    position-anchor: bottom;
+}
+
+#onas section{
+    margin: 10px;
+    padding: 20px;
+    border: gray solid 5px;
+    border-radius: 10%;
+}
+
+h2{
+    text-align: center;
+    font-size: 2em;
+    text-decoration: underline;
+}
+
+h3{
+    text-align: center;
+    font-size: 1.5em;
+}
