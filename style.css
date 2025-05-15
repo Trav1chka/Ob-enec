@@ -50,6 +50,11 @@ body {
     border-radius: 10%;
 }
 
+.shield{
+    width: 100px;
+    height: 100px;
+}
+
 h2{
     text-align: center;
     font-size: 2em;
@@ -59,4 +64,8 @@ h2{
 h3{
     text-align: center;
     font-size: 1.5em;
+}
+
+i{
+    font-size: 36px;
 }
