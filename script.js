@@ -10,7 +10,7 @@ document.getElementById("datum").innerHTML = "Dnes je " + denVMesici + ". " + me
 let dark_mode;
 function mode() {
   const modeImg = document.querySelector('#mode img');
-  if (dark_mode == true)) {
+  if (dark_mode == true) {
       modeImg.src = './graphics/icons/darkmode-switch.png';
       modeImg.alt = 'Přepnutí na světlý režim';
       dark_mode = false
