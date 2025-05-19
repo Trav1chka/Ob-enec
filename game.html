@@ -13,8 +13,9 @@
     <header>
         <img src="./graphics/temp/temp-icon_200x200.png" alt="logo oběšence">
         <h1>OBĚŠENEC</h1>
-        <span class="material-symbols-outlined">toggle_off</span>
-        <span class="material-symbols-outlined">toggle_on</span>
+        <div id="mode">
+            <img src="./graphics/icons/lightmode-switch.png" alt="Přepnutí na tmavý režim" onclick="mode()">
+        </div>
     </header>
     
     <main>
@@ -37,12 +38,13 @@
     </main>
    
     <footer>
-        <div class="datum-box" id="datum">  </div> <!-- woaaah datum!!! -->
-        <i class="fa fa-github"></i> <!-- s tím jsem se štval 20 minut, pls zabte mě, googo nechtělo vytvořit ikoknu na github si co myslí? že jsem nějakej stvořitel a že to sám vytvořim?? o hell nah dawg just put the fries in da bag ti říkám tohle není normální. musel jsem to hledat na nějaký debilní stránce, kteráv má  v sobě nejspíš nějakej debilní vir, ale aspoń že to fachá to je to hlavní....... -->
         <div id="GHrepo">
-            <a href="https://github.com/Trav1chka/Ob-enec">ODKAZ NA GITHUB</a> <!-- odkaz na github, no shit sherlock -->
+            <a href="https://github.com/Trav1chka/Ob-enec"><img src="./graphics/icons/GitHub.png" alt="Odkaz na github"></i></a> 
         </div>
-        <p id="trademark">PIZDEC GAMES</p>
+        <div id="info-box">
+            <p id="datum"></p>
+            <p id="trademark">ADZIP GAMES™</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
