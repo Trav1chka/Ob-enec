@@ -1,12 +1,54 @@
+/* barvy světlého režimu */
+:root {
+    --background-color: rgb(230, 230, 230);
+    --text-color: black;
+    --header-footer-bg-color: rgb(150, 150, 150);
+    --github-brightness: brightness(1);
+}
+
+/* barvy tmavého režimu */
+body.dark-mode {
+    --background-color: rgb(40, 40, 40);
+    --text-color: white;
+    --header-footer-bg-color: rgb(20, 20, 20);
+    --github-brightness: brightness(1.7);
+}
+
+/*!________________________________________________________________________________!*/
+
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgb(168, 168, 168);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    cursor: default;
+}
+
+header {
+    display: flex;
+    background-color: var(--header-footer-bg-color);
+    padding: 8px;
+}
+
+header, #onas, h2, h3, #info-box, #datum, #trademark, footer {
+    color: var(--text-color);
+}
+
+header img {
+    width: 75px;
 }
 
 #logo {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#mode {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
 }
 
 #play {
@@ -40,7 +82,15 @@ body {
 
 #onas {
     display: flex;
-    position-anchor: bottom;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 3em;
+    margin: auto;
+    margin-top: 1em;
+    text-shadow: 3px 3px 3px rgb(102, 102, 102);
 }
 
 #onas section {
@@ -50,15 +100,11 @@ body {
     border-radius: 10%;
 }
 
-.shield {
-    width: 100px;
-    height: 100px;
-}
-
-h2 {
-    text-align: center;
-    font-size: 2em;
-    text-decoration: underline;
+#onas section img {
+    width: 25px;
+    height: 25px;
+    display: inline;
+    vertical-align:text-top;
 }
 
 h3 {
@@ -66,14 +112,25 @@ h3 {
     font-size: 1.5em;
 }
 
-i {
-    font-size: 36px;
+#GHrepo img {
+    height: 50px;
+    filter: var(--github-brightness);
 }
 
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+#info-box{
+    margin-left: auto;
+}
+
+#datum {
+    margin-top: 0;
+}
+
+#trademark {
+    margin: 0px;
+}
+
+footer{
+    background-color: var(--header-footer-bg-color);
+    display: flex;
+    padding: 8px;
 }
