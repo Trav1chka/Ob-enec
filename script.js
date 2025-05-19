@@ -15,11 +15,11 @@ function mode() {
   dark_mode = !dark_mode;
   if (modeImg) {
     if (dark_mode) {
-      modeImg.src = './graphics/icons/lightmode-switch.png';
-      modeImg.alt = 'Přepnutí na tmavý režim';
-    } else {
       modeImg.src = './graphics/icons/darkmode-switch.png';
       modeImg.alt = 'Přepnutí na světlý režim';
+    } else {
+      modeImg.src = './graphics/icons/lightmode-switch.png';
+      modeImg.alt = 'Přepnutí na tmavý režim';
     }
   }
   localStorage.setItem('dark_mode', dark_mode);
@@ -33,11 +33,11 @@ if (dark_mode) {
 }
 if (modeImg) {
   if (dark_mode) {
-    modeImg.src = './graphics/icons/lightmode-switch.png';
-    modeImg.alt = 'Přepnutí na tmavý režim';
-  } else {
     modeImg.src = './graphics/icons/darkmode-switch.png';
     modeImg.alt = 'Přepnutí na světlý režim';
+  } else {
+    modeImg.src = './graphics/icons/lightmode-switch.png';
+    modeImg.alt = 'Přepnutí na tmavý režim';
   }
 }
 
