@@ -7,20 +7,39 @@ denVMesici = datum.getDate();
 document.getElementById("datum").innerHTML = "Dnes je " + denVMesici + ". " + mesic + ".";
 
 //* Script pro měnění režimů
-let dark_mode;
+let dark_mode = localStorage.getItem('dark_mode') === 'true';
 function mode() {
+  const body = document.body;
   const modeImg = document.querySelector('#mode img');
-  if (dark_mode == true) {
-      modeImg.src = './graphics/icons/darkmode-switch.png';
-      modeImg.alt = 'Přepnutí na světlý režim';
-      dark_mode = false
-  } else {
+  body.classList.toggle('dark-mode');
+  dark_mode = !dark_mode;
+  if (modeImg) {
+    if (dark_mode) {
       modeImg.src = './graphics/icons/lightmode-switch.png';
       modeImg.alt = 'Přepnutí na tmavý režim';
-      dark_mode = true
+    } else {
+      modeImg.src = './graphics/icons/darkmode-switch.png';
+      modeImg.alt = 'Přepnutí na světlý režim';
+    }
   }
+  localStorage.setItem('dark_mode', dark_mode);
 }
 
+//* Script pro zobrazení aktuálního režimu
+const body = document.body;
+const modeImg = document.querySelector('#mode img');
+if (dark_mode) {
+  body.classList.add('dark-mode');
+}
+if (modeImg) {
+  if (dark_mode) {
+    modeImg.src = './graphics/icons/lightmode-switch.png';
+    modeImg.alt = 'Přepnutí na tmavý režim';
+  } else {
+    modeImg.src = './graphics/icons/darkmode-switch.png';
+    modeImg.alt = 'Přepnutí na světlý režim';
+  }
+}
 
 
 //! game.html //
