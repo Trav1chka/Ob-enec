@@ -1,8 +1,30 @@
+//! index.html //
+
+//* Script pro datum
 datum = new Date(); // vytvoří proměnnou obsahující aktuální datum
 mesic = datum.getMonth() + 1; //leden je 0
 denVMesici = datum.getDate();
 document.getElementById("datum").innerHTML = "Dnes je " + denVMesici + ". " + mesic + ".";
 
+//* Script pro měnění režimů
+function mode() {
+  const body = document.body;
+  body.classList.toggle('dark-mode');
+  const modeImg = document.querySelector('#mode img');
+  if (body.classList.contains('dark-mode')) {
+      modeImg.src = './graphics/icons/darkmode-switch.png';
+      modeImg.alt = 'Přepnutí na světlý režim';
+  } else {
+      modeImg.src = './graphics/icons/lightmode-switch.png';
+      modeImg.alt = 'Přepnutí na tmavý režim';
+  }
+}
+
+
+
+//! game.html //
+
+//* Script pro Generaci slov
 let slova;
 let slovo;
 let pocetPismen;
