@@ -68,3 +68,8 @@ function play() {
     divSlovo.appendChild(div); // pridani pismena a line do divu se vsema pismeny
   }
 }
+
+function play() {
+    console.log("Spouštím..."); //cokoliv co chci spustit
+    window.location.href = "game.html";  // přesměrování na stránku
+}
