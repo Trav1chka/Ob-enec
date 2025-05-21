@@ -45,31 +45,44 @@ if (modeImg) {
 //! game.html //
 
 //* Script pro Generaci slov
-let slova;
+let slova = ["net", "idi", "nahui"]; // seznam slov, ktere bude uzivatel odhadovat
 let slovo;
 let pocetPismen;
+
 function play() {
-  slova = ["net", "idi", "nahui"]; // seznam slov, ktere bude uzivatel odhadovat
-  slovo = slova[Math.floor(Math.random() * length(slova) - 1) + 1]; // vyber nahodneho slova
-  pocetPismen = length(slovo);
+  // Only redirect to game.html
+  localStorage.setItem("game", true)
+  window.location.href = "game.html";
+}
+
+function initGame() {
+  slovo = slova[Math.floor(Math.random() * slova.length)]; // vyber nahodneho slova
+  pocetPismen = slovo.length;
+  const divSlovo = document.getElementById("slovo");
+  divSlovo.innerHTML = null; // clear previous content if any
   for (let i = 0; i < pocetPismen; i++) {
-    const divSlovo = document.getElementById("pismena");
     const div = document.createElement("div"); // vytvareni divu pro pismeno a line
+    div.className = "letters";
+    div.id = "letterDiv" + String(i + 1);
     const pismeno = document.createElement("p"); // vytvareni odstavce pro pismeno
     pismeno.id = "pismeno" + String(i + 1);
     pismeno.innerHTML = slovo[i];
-    pismeno.style.fontStyle = "white"; // zmena barvy pisma abych ho nebylo videt
+    pismeno.style.fontSize = "100px";
+    if (!dark_mode) {
+      pismeno.style.color = "rgb(230, 230, 230)"; // zmena barvy pisma abych ho nebylo videt
+    } else {
+      pismeno.style.color = "rgb(40, 40, 40)";
+    }
     const line = document.createElement("img"); // vytvareni obrazku
     line.id = "line" + String(i + 1);
     line.src = "./graphics/temp/temp-guess_200x200.png";
     line.alt = "line" + String(i + 1);
-    div.appendChild(pismeno); 
+    div.appendChild(pismeno);
     div.appendChild(line);
     divSlovo.appendChild(div); // pridani pismena a line do divu se vsema pismeny
   }
 }
 
-function play() {
-    console.log("Spouštím..."); //cokoliv co chci spustit
-    window.location.href = "game.html";  // přesměrování na stránku
+if (localStorage.getItem("game") == "true") {
+  initGame();
 }
