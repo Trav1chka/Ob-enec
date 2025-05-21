@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <img src="./graphics/temp/temp-icon_200x200.png" alt="logo oběšence">
+        <img src="./graphics/temp/temp-icon_200x200.png" alt="logo oběšence" id="ikona">
         <h1>OBĚŠENEC</h1>
         <div id="mode">
             <img src="./graphics/icons/lightmode-switch.png" alt="Přepnutí na tmavý režim" onclick="mode()">
@@ -21,19 +21,23 @@
     
     <main>
         <div id="surrender">
-            <a href="./">VZDAT TO</a>
+            <a href="./index.html">VZDAT TO</a>
+            <button id="restartbtn" onclick="initGame()">RESTART</button>
         </div>
+        
         <div id="GAME">
             <div id="sibenice">
                 <img src="./graphics/temp/temp-full_obesenec_1000x1000.png" alt="oběšenec">
             </div>
             
-            <div id="pismena">
-            <!-- pypyski -->
-            </div>
-            
-            <div id="slovo">
-            
+            <div id="LettersWords">
+                <div id="pismena">
+                <!-- pypyski -->
+                </div>
+                
+                <div id="slovo">
+                
+                </div>
             </div>
         </div>
     </main>
