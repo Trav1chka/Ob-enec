@@ -14,29 +14,7 @@ body.dark-mode {
     --github-brightness: brightness(1.7);
 }
 
-/*!_______________________________________________________________________________!*/
-
-body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    cursor: default;
-}
-
-header {
-    display: flex;
-    background-color: var(--header-footer-bg-color);
-    padding: 8px;
-}
-
-header, #onas, h2, h3, #info-box, #datum, #trademark, footer {
-    color: var(--text-color);
-}
-
-header img {
-    width: 75px;
-}
+/*!_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_index.html_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-!*/
 
 #logo {
     display: flex;
@@ -63,21 +41,23 @@ header img {
     font-size: 2em;
     padding: 15px 30px;
     cursor: pointer;
-    border: 2px solid #007BFF;
+    border: 2px solid white;
     background-color: transparent;
-    color: #007BFF;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 #play button:hover {
-    background-color: #007BFF;
-    color: white;
-    border-color: #007BFF;
+    background-color: white;
+    border-color: white;
 }
 
 #play a {
     display: inline-block;
     text-decoration: none;
+}
+
+hr{
+    margin-top: 400px;
 }
 
 #onas {
@@ -110,6 +90,46 @@ h2 {
 h3 {
     text-align: center;
     font-size: 1.5em;
+}
+
+/*!_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_game.html_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-!*/
+
+#GAME{
+    display: flex;
+    margin: auto;
+}
+
+#sibenice img{
+    width: 72.65%;
+}
+
+/*!_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_universal_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-!*/
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    cursor: default;
+}
+
+header {
+    display: flex;
+    background-color: var(--header-footer-bg-color);
+    padding: 8px;
+}
+
+header, #onas, h2, h3, #info-box, #datum, #trademark, footer {
+    color: var(--text-color);
+}
+
+header img {
+    width: 75px;
+}
+
+#Ikona{
+    height: 75px;
+    vertical-align: text-top;
 }
 
 #GHrepo img {
