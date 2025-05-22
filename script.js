@@ -88,7 +88,7 @@ function initGame() {
     }
     const line = document.createElement("img"); // vytvareni obrazku
     line.id = "line" + String(i + 1);
-    line.src = "./graphics/temp/temp-guess_200x200.png";
+    line.src = "./graphics/temp/guess_200xidfk.png";
     line.alt = "line" + String(i + 1);
     div.appendChild(pismeno);
     div.appendChild(line);
