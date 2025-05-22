@@ -23,6 +23,18 @@ function mode() {
     }
   }
   localStorage.setItem('dark_mode', dark_mode);
+  lettersColor();
+}
+
+function lettersColor() {
+  for (let i = 0; i < slovo.length; i++) {
+    const pismeno = document.getElementById("pismeno" + String(i + 1));
+    if (pismeno.style.color == "rgb(230, 230, 230)") {
+      pismeno.style.color = "rgb(40, 40, 40)";
+    } else {
+      pismeno.style.color = "rgb(230, 230, 230)";
+    }
+  }
 }
 
 //* Script pro zobrazení aktuálního režimu
@@ -48,6 +60,7 @@ if (modeImg) {
 let slova = ["net", "idi", "nahui"]; // seznam slov, ktere bude uzivatel odhadovat
 let slovo;
 let pocetPismen;
+let pocetOdhadnuti = 0;
 
 function play() {
   // Only redirect to game.html
@@ -82,6 +95,33 @@ function initGame() {
     divSlovo.appendChild(div); // pridani pismena a line do divu se vsema pismeny
   }
 }
+
+function letter(letter) {
+  if (letter in slovo) {
+    for (let i = 0; i < slovo.length; i++) {
+      if (slovo[i] == letter) {
+        const pismeno = document.getElementById("pismeno" + String(i + 1));
+        if (!dark_mode) {
+          pismeno.style.color = "rgb(230, 230, 230)"
+        } else {
+          pismeno.style.color = "rgb(40, 40, 40)"
+        }
+        pocetOdhadnuti++;
+      }
+    }
+    if (pocetOdhadnuti == slovo.length) {
+      window.alert("Vyhral jsi!");
+      initGame();
+    }
+  }
+}
+
+letters = ["a", "á", "b", "c", "č", "d", "ď", "e", "é", "ě", "f", "g", "h", "i", "í", "j", "k", "l", "m", "n", "ň", "o", "p", "q", "r", "ř", "s", "š", "t", "ť", "u", "ú", "ů", "v", "w", "x", "y", "ý", "z", "ž"];
+document.addEventListener('keydown', function(event) {
+  if (event.key.toLowerCase() in letters) {
+    letter(event.key.toLowerCase());
+  }
+});
 
 if (localStorage.getItem("game") == "true") {
   initGame();
