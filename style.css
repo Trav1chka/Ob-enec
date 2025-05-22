@@ -2,8 +2,10 @@
 :root {
     --background-color: rgb(230, 230, 230);
     --text-color: black;
-    --header-footer-bg-color: rgb(150, 150, 150);
+    --header-footer-bg-color: rgb(180, 180, 180);
     --github-brightness: brightness(1);
+    --keyboard-bg-color: rgb(60,60,60);
+    --keyboard-bg-color-hover: rgb(40,40,40);
 }
 
 /* barvy tmavého režimu */
@@ -12,6 +14,8 @@ body.dark-mode {
     --text-color: white;
     --header-footer-bg-color: rgb(20, 20, 20);
     --github-brightness: brightness(1.7);
+    --keyboard-bg-color: rgb(230, 230, 230);
+    --keyboard-bg-color-hover: rgb(180, 180, 180);
 }
 
 /*!_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_index.html_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-!*/
@@ -36,12 +40,9 @@ body.dark-mode {
 }
 
 #play button {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    font-size: 2em;
-    padding: 15px 30px;
+    margin-top: 45px;
     cursor: pointer;
-    border: 2px solid white;
+    border: 3px double white;
     background-color: transparent;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -51,9 +52,8 @@ body.dark-mode {
     border-color: white;
 }
 
-#play a {
-    display: inline-block;
-    text-decoration: none;
+#play img {
+    width: 200px;
 }
 
 hr{
@@ -94,6 +94,33 @@ h3 {
 
 /*!_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_game.html_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-!*/
 
+/** Buttons **/
+#surrender{
+    margin-left: 100px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+}
+
+#surrender img{
+    width: 50px;
+    transition: 1s;
+}
+
+#surrender button{
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+}
+
+
+#surrender img:hover{
+    transition: 1s;
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 8px var(--keyboard-bg-color));
+}
+
+/** Šibenice **/
 #GAME{
     display: flex;
     margin: auto;
@@ -101,6 +128,47 @@ h3 {
 
 #sibenice img{
     width: 72.65%;
+}
+/** Klavesnice **/
+
+#pismena div {
+    display: flex;
+    justify-content: center;
+    margin: 8px; 
+}
+
+#pismena button {
+    cursor: pointer;
+    margin: 2px;
+    border-radius: 15%;
+    border: var(--keyboard-bg-color);
+    background-color: var(--keyboard-bg-color);
+}
+
+#pismena button:hover {
+    border: var(--keyboard-bg-color-hover);
+    background-color: var(--keyboard-bg-color-hover);
+}
+
+#pismena button img {
+    display: block;
+    
+}
+
+#pismena img{
+    width: 50px;
+}
+
+
+/** Slovo **/
+#slovo{
+    display: flex;
+    justify-content: center;
+}
+
+#slovo p{
+    margin: 0;
+    text-align: center;
 }
 
 /*!_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_universal_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-!*/
