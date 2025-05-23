@@ -57,10 +57,11 @@ if (modeImg) {
 //! game.html //
 
 //* Script pro Generaci slov
-let slova = ["net", "idi", "nahui"]; // seznam slov, ktere bude uzivatel odhadovat
+let slova = ["net", "idi", "nahui", "ja", "sosu", "bibu", "da", "mne", "pojui"]; // seznam slov, ktere bude uzivatel odhadovat
 let slovo;
 let pocetPismen;
 let pocetOdhadnuti = 0;
+let pocetHybnychOdhadnuti = 0;
 
 function play() {
   // Only redirect to game.html
@@ -97,20 +98,35 @@ function initGame() {
 }
 
 function letter(letter) {
-  if (letter in slovo) {
+  letter = letter.toLowerCase();
+  if (slovo.includes(letter)) {
     for (let i = 0; i < slovo.length; i++) {
       if (slovo[i] == letter) {
         const pismeno = document.getElementById("pismeno" + String(i + 1));
         if (!dark_mode) {
-          pismeno.style.color = "rgb(230, 230, 230)"
-        } else {
           pismeno.style.color = "rgb(40, 40, 40)"
+        } else {
+          pismeno.style.color = "rgb(230, 230, 230)"
         }
         pocetOdhadnuti++;
+        if (pocetOdhadnuti == slovo.length) {
+          setTimeout(() => {
+            pocetHybnychOdhadnuti = 0;
+            pocetOdhadnuti = 0;
+            window.alert("Vyhral jsi!");
+            initGame();
+          }, 100); // timeout 100 milisekund abych barva stihla se zmenit
+        }
       }
     }
-    if (pocetOdhadnuti == slovo.length) {
-      window.alert("Vyhral jsi!");
+  } else {
+    pocetHybnychOdhadnuti++;
+    const image = document.getElementById("obesenec");
+    image.src = "./graphics/obesenec/stage" + String(pocetHybnychOdhadnuti) + ".png";
+    if (pocetHybnychOdhadnuti == 9) {
+      pocetHybnychOdhadnuti = 0;
+      pocetOdhadnuti = 0;
+      window.alert("Prohral jsi!");
       initGame();
     }
   }
@@ -118,7 +134,7 @@ function letter(letter) {
 
 letters = ["a", "á", "b", "c", "č", "d", "ď", "e", "é", "ě", "f", "g", "h", "i", "í", "j", "k", "l", "m", "n", "ň", "o", "p", "q", "r", "ř", "s", "š", "t", "ť", "u", "ú", "ů", "v", "w", "x", "y", "ý", "z", "ž"];
 document.addEventListener('keydown', function(event) {
-  if (event.key.toLowerCase() in letters) {
+  if (letters.includes(event.key.toLowerCase())) {
     letter(event.key.toLowerCase());
   }
 });
