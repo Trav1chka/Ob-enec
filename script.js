@@ -11,25 +11,25 @@ let dark_mode = localStorage.getItem('dark_mode') === 'true';
 function mode() {
   const body = document.body;
   const modeImg = document.querySelector('#mode img');
-  body.classList.toggle('dark-mode');
+  body.classList.toggle('dark-mode'); // přepnutí režimu
   dark_mode = !dark_mode;
   if (modeImg) {
     if (dark_mode) {
-      modeImg.src = './graphics/icons/darkmode-switch.png';
+      modeImg.src = './graphics/icons/darkmode-switch.png'; // zmena ikony tlacitka pro prepnuti rezimu
       modeImg.alt = 'Přepnutí na světlý režim';
     } else {
-      modeImg.src = './graphics/icons/lightmode-switch.png';
+      modeImg.src = './graphics/icons/lightmode-switch.png'; // zmena ikony tlacitka pro prepnuti rezimu
       modeImg.alt = 'Přepnutí na tmavý režim';
     }
   }
-  localStorage.setItem('dark_mode', dark_mode);
-  lettersColor();
+  localStorage.setItem('dark_mode', dark_mode); // ulozeni stavu rezimu
+  lettersColor(); // zmena barvy pismen slova, ktere hadame
 }
 
-function lettersColor() {
-  for (let i = 0; i < slovo.length; i++) {
+function lettersColor() { // funkce pro zmena barvy pismen
+  for (let i = 0; i < slovo.length; i++) { // prochazeni slova
     const pismeno = document.getElementById("pismeno" + String(i + 1));
-    if (pismeno.style.color == "rgb(230, 230, 230)") {
+    if (pismeno.style.color == "rgb(230, 230, 230)") { // zmena barvy na opacnou pro prepnuti rezimu
       pismeno.style.color = "rgb(40, 40, 40)";
     } else {
       pismeno.style.color = "rgb(230, 230, 230)";
@@ -45,10 +45,10 @@ if (dark_mode) {
 }
 if (modeImg) {
   if (dark_mode) {
-    modeImg.src = './graphics/icons/darkmode-switch.png';
+    modeImg.src = './graphics/icons/darkmode-switch.png'; // zmena ikony tlacitka pro prepnuti rezimu
     modeImg.alt = 'Přepnutí na světlý režim';
   } else {
-    modeImg.src = './graphics/icons/lightmode-switch.png';
+    modeImg.src = './graphics/icons/lightmode-switch.png'; // zmena ikony tlacitka pro prepnuti rezimu
     modeImg.alt = 'Přepnutí na tmavý režim';
   }
 }
@@ -64,9 +64,8 @@ let pocetOdhadnuti = 0;
 let pocetHybnychOdhadnuti = 0;
 
 function play() {
-  // Only redirect to game.html
-  localStorage.setItem("game", true)
-  window.location.href = "game.html";
+  localStorage.setItem("game", true) // pro zacatek hry bez tlacitka
+  window.location.href = "game.html"; // prepnuti na game.html
 }
 
 function initGame() {
@@ -97,48 +96,48 @@ function initGame() {
   }
 }
 
-function letter(letter) {
-  letter = letter.toLowerCase();
-  if (slovo.includes(letter)) {
-    for (let i = 0; i < slovo.length; i++) {
+function letter(letter) { // funkce pro odhad pismena
+  letter = letter.toLowerCase(); // prevedeni na mala pismena
+  if (slovo.includes(letter)) { // pokud pismeno je v slove
+    for (let i = 0; i < slovo.length; i++) { // prochazeni slova
       if (slovo[i] == letter) {
         const pismeno = document.getElementById("pismeno" + String(i + 1));
-        if (!dark_mode) {
+        if (!dark_mode) { // zmena barvy pisma podle rezimu abych ho nebylo videt
           pismeno.style.color = "rgb(40, 40, 40)"
         } else {
           pismeno.style.color = "rgb(230, 230, 230)"
         }
-        pocetOdhadnuti++;
+        pocetOdhadnuti++; // zvyseni pocet odhadnuti
         if (pocetOdhadnuti == slovo.length) {
           setTimeout(() => {
             pocetHybnychOdhadnuti = 0;
             pocetOdhadnuti = 0;
             window.alert("Vyhral jsi!");
-            initGame();
-          }, 100); // timeout 100 milisekund abych barva stihla se zmenit
+            initGame(); // reset hry
+          }, 100); // timeout 100 milisekund abych barva textu stihla se zmenit
         }
       }
     }
   } else {
-    pocetHybnychOdhadnuti++;
+    pocetHybnychOdhadnuti++; // zvyseni pocet hybnych odhadnuti
     const image = document.getElementById("obesenec");
-    image.src = "./graphics/obesenec/stage" + String(pocetHybnychOdhadnuti) + ".png";
+    image.src = "./graphics/obesenec/stage" + String(pocetHybnychOdhadnuti) + ".png"; // zmena obrazku
     if (pocetHybnychOdhadnuti == 9) {
       pocetHybnychOdhadnuti = 0;
       pocetOdhadnuti = 0;
       window.alert("Prohral jsi!");
-      initGame();
+      initGame(); // reset hry
     }
   }
 }
 
-letters = ["a", "á", "b", "c", "č", "d", "ď", "e", "é", "ě", "f", "g", "h", "i", "í", "j", "k", "l", "m", "n", "ň", "o", "p", "q", "r", "ř", "s", "š", "t", "ť", "u", "ú", "ů", "v", "w", "x", "y", "ý", "z", "ž"];
-document.addEventListener('keydown', function(event) {
+letters = ["a", "á", "b", "c", "č", "d", "ď", "e", "é", "ě", "f", "g", "h", "i", "í", "j", "k", "l", "m", "n", "ň", "o", "ó", "p", "q", "r", "ř", "s", "š", "t", "ť", "u", "ú", "ů", "v", "w", "x", "y", "ý", "z", "ž"];
+document.addEventListener('keydown', function(event) { // nacteni klaves z klavesnice
   if (letters.includes(event.key.toLowerCase())) {
-    letter(event.key.toLowerCase());
+    letter(event.key.toLowerCase()); // odhad pismena
   }
 });
 
 if (localStorage.getItem("game") == "true") {
-  initGame();
+  initGame(); // zacatek hry
 }
