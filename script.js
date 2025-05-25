@@ -112,7 +112,7 @@ function letter(letter) { // funkce pro odhad pismena
           setTimeout(() => {
             pocetHybnychOdhadnuti = 0;
             pocetOdhadnuti = 0;
-            window.alert("Vyhral jsi!");
+            window.alert("Ｖｙｈｒａｌ   ｓｉ！");
             initGame(); // reset hry
           }, 100); // timeout 100 milisekund abych barva textu stihla se zmenit
         }
@@ -122,10 +122,10 @@ function letter(letter) { // funkce pro odhad pismena
     pocetHybnychOdhadnuti++; // zvyseni pocet hybnych odhadnuti
     const image = document.getElementById("obesenec");
     image.src = "./graphics/obesenec/stage" + String(pocetHybnychOdhadnuti) + ".png"; // zmena obrazku
-    if (pocetHybnychOdhadnuti == 9) {
+    if (pocetHybnychOdhadnuti == 8) {
       pocetHybnychOdhadnuti = 0;
       pocetOdhadnuti = 0;
-      window.alert("Prohral jsi!");
+      window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
       initGame(); // reset hry
     }
   }
