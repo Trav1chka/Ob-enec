@@ -3,6 +3,10 @@
     --background-color: rgb(230, 230, 230);
     --text-color: black;
     --header-footer-bg-color: rgb(180, 180, 180);
+    --button-border-color: rgb(180, 180, 180);
+    --button-border-style: solid;
+    --button-bg-color: var(--background-color);
+    --button-bg-color-hover: rgb(180, 180, 180);
     --github-brightness: brightness(1);
     --keyboard-bg-color: rgb(60,60,60);
     --keyboard-bg-color-hover: rgb(40,40,40);
@@ -13,6 +17,10 @@ body.dark-mode {
     --background-color: rgb(40, 40, 40);
     --text-color: white;
     --header-footer-bg-color: rgb(20, 20, 20);
+    --button-border-color: white;
+    --button-border-style: double;
+    --button-bg-color: var(--background-color);
+    --button-bg-color-hover: white;
     --github-brightness: brightness(1.7);
     --keyboard-bg-color: rgb(230, 230, 230);
     --keyboard-bg-color-hover: rgb(180, 180, 180);
@@ -42,14 +50,14 @@ body.dark-mode {
 #play button {
     margin-top: 45px;
     cursor: pointer;
-    border: 3px double white;
+    border: 3px var(--button-border-style) var(--button-border-color);
     background-color: transparent;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 #play button:hover {
-    background-color: white;
-    border-color: white;
+    background-color: var(--button-bg-color-hover);
+    border-color: var(--button-border-color);
 }
 
 #play img {
@@ -126,6 +134,10 @@ h3 {
     margin: auto;
 }
 
+#sibenice, #LettersWords {
+    flex: 1;
+}
+
 #sibenice img{
     width: 72.65%;
 }
@@ -179,6 +191,9 @@ body {
     color: var(--text-color);
     margin: 0;
     cursor: default;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -195,10 +210,10 @@ header img {
     width: 75px;
 }
 
-#Ikona{
-    height: 75px;
-    vertical-align: text-top;
+main {
+    flex-grow: 1
 }
+
 
 #GHrepo img {
     height: 50px;
