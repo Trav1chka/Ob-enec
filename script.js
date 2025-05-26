@@ -62,6 +62,7 @@ let slovo;
 let pocetPismen;
 let pocetOdhadnuti = 0;
 let pocetHybnychOdhadnuti = 0;
+let odhadovanePismena = [];
 
 function play() {
   localStorage.setItem("game", true) // pro zacatek hry bez tlacitka
@@ -90,6 +91,8 @@ function initGame() {
     line.id = "line" + String(i + 1);
     line.src = "./graphics/temp/guess_200xidfk.png";
     line.alt = "line" + String(i + 1);
+    const obesenec = document.getElementById("obesenec");
+    obesenec.src = "./graphics/obesenec/stage0.png";
     div.appendChild(pismeno);
     div.appendChild(line);
     divSlovo.appendChild(div); // pridani pismena a line do divu se vsema pismeny
@@ -99,6 +102,9 @@ function initGame() {
 function letter(letter) { // funkce pro odhad pismena
   letter = letter.toLowerCase(); // prevedeni na mala pismena
   if (slovo.includes(letter)) { // pokud pismeno je v slove
+    if (odhadovanePismena.includes(letter)) {
+      return
+    }
     for (let i = 0; i < slovo.length; i++) { // prochazeni slova
       if (slovo[i] == letter) {
         const pismeno = document.getElementById("pismeno" + String(i + 1));
@@ -108,7 +114,8 @@ function letter(letter) { // funkce pro odhad pismena
           pismeno.style.color = "rgb(230, 230, 230)"
         }
         pocetOdhadnuti++; // zvyseni pocet odhadnuti
-        if (pocetOdhadnuti == slovo.length) {
+        odhadovanePismena.push(letter);
+        if (pocetOdhadnuti == pocetPismen) {
           setTimeout(() => {
             pocetHybnychOdhadnuti = 0;
             pocetOdhadnuti = 0;
