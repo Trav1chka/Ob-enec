@@ -130,10 +130,12 @@ function letter(letter) { // funkce pro odhad pismena
     const image = document.getElementById("obesenec");
     image.src = "./graphics/obesenec/stage" + String(pocetHybnychOdhadnuti) + ".png"; // zmena obrazku
     if (pocetHybnychOdhadnuti == 8) {
-      pocetHybnychOdhadnuti = 0;
-      pocetOdhadnuti = 0;
-      window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
-      initGame(); // reset hry
+      setTimeout(() => {
+        pocetHybnychOdhadnuti = 0;
+        pocetOdhadnuti = 0;
+        window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
+        initGame(); // reset hry
+      }, 100);
     }
   }
 }
