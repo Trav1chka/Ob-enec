@@ -8,11 +8,13 @@
     <meta name="keywords" content="Šibenice, Projekt">
     <link rel="stylesheet" href="style.css">
     <title>OBĚŠENEC</title>
-    <link rel="icon" type="image/png" href="./graphics/temp/temp-icon_32x32.png">
+    <link rel="icon" type="image/png" href="./graphics/art/favicon-64x64.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="./graphics/art/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./graphics/art/favicon-16x16.png" sizes="16x16">
 </head>
 <body>
     <header>
-        <img src="./graphics/temp/temp-icon_200x200.png" alt="logo oběšence" id="ikona">
+        <img src="./graphics/art/icon.png" alt="logo oběšence" id="ikona">
         <h1>OBĚŠENEC</h1>
         <div id="mode">
             <img src="./graphics/icons/lightmode-switch.png" alt="Přepnutí na tmavý režim" onclick="mode()">
@@ -20,10 +22,11 @@
     </header>
     
     <main>
-        <div id="surrender">
+        <nav id="surrender">
             <a href="./index.html"><img src="./graphics/icons/reset.png" alt="Vzdát to"></a>
-            <button id="restartbtn" onclick="initGame()"><img src="./graphics/icons/restart.png" alt=""></button>
-        </div>
+            <button id="restartbtn" onclick="initGame()"><img src="./graphics/icons/restart.png" alt="restart"></button>
+            <button id="tutorial" onclick="tutorial()"><img src=".graphics/icons/help.png" alt="tutorial"></button>
+        </nav>
         
         <div id="GAME">
             <div id="sibenice">
@@ -31,6 +34,11 @@
             </div>
             
             <div id="LettersWords">
+                <div id="CSH">
+                    <p id="time"></p>
+                    <p id="score"></p>
+                    <p id="High_Score"></p>
+                </div>
                 <div id="pismena">
                     <div id="radka1">
                         <button onclick="letter('ě')"><img src="./graphics/pismena/ě.png" alt="ě"></button>
