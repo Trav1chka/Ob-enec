@@ -32,6 +32,11 @@ body.dark-mode {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1%;
+}
+
+#logo img{
+    width: 1200px;
 }
 
 #mode {
@@ -101,7 +106,6 @@ h3 {
 }
 
 /*!_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_game.html_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-!*/
-
 /** Buttons **/
 #surrender{
     margin-left: 100px;
@@ -201,6 +205,11 @@ header {
     background-color: var(--header-footer-bg-color);
     padding: 8px;
 }
+
+a{
+    display: flex;
+    text-decoration: none;
+    color: var(--text-color);}
 
 header, #onas, h2, h3, #info-box, #datum, #trademark, footer {
     color: var(--text-color);
