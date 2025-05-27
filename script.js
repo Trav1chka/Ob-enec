@@ -89,7 +89,7 @@ function initGame() {
     }
     const line = document.createElement("img"); // vytvareni obrazku
     line.id = "line" + String(i + 1);
-    line.src = "./graphics/temp/guess_200xidfk.png";
+    line.src = "./graphics/pismena/_guess_200x40.png";
     line.alt = "line" + String(i + 1);
     const obesenec = document.getElementById("obesenec");
     obesenec.src = "./graphics/obesenec/stage0.png";
