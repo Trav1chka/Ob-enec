@@ -24,10 +24,21 @@
     </header>
     
     <main>
+        <div id="tutorial">         
+            <div id="zavrit">
+                <button onclick="tutorial(false)"><img src="./graphics/pismena/X.png" alt="zavřít okno"></button>
+            </div>
+            <div> 
+                <img src="./graphics/art/logo.png" alt="logo oběšence" id="logo_tut">
+            </div>
+            <div>
+                <p>Vítej ve hře OBĚŠENEC! Samozřejmě víme, jak je těžké se na stránkách orientovat, proto jsme ti udělali tutorial, jak na to! Zachvíli uvidíš vlevo nahoře tři malé ikonky. První vypadá jako oprátka <img src="./graphics/icons/reset.png" alt="oprátka" class="icon_tut">, druhý jako kolečko <img src="./graphics/icons/restart.png" alt="restart" class="icon_tut"> a třetí jako otazník <img src="./graphics/icons/help.png" alt="tutorial" class="icon_tut">. Pomocí oprátky se vzdáš, s kolečkem restaruješ hru, to znamená, že ti vytvoříme další slovo na uhádnutí! A otazník ti znovu otevře tento tutorial. Tak a teď se dostáváme k samotné hře, vpravo budeš mít klávesnici a slovo na uhádnutí. Na klávesnici můžes klikat a hádat písmena, jestli jseš líný na pohybování myši, tak můžeš psát i na tvojí klávesnici. Vlevo máš svého oběšence, máš celkově jen 8 pokusů ho zachránit! Tak hodně štěstí a jdi na to!</p>
+            </div>
+        </div>
         <nav id="surrender">
             <a href="./index.html"><img src="./graphics/icons/reset.png" alt="Vzdát to"></a>
             <button id="restartbtn" onclick="initGame()"><img src="./graphics/icons/restart.png" alt="restart"></button>
-            <button id="tutorial" onclick="tutorial()"><img src="./graphics/icons/help.png" alt="tutorial"></button>
+            <button id="tutorialbtn" onclick="tutorial(true)"><img src="./graphics/icons/help.png" alt="tutorial"></button>
         </nav>
         
         <div id="GAME">
