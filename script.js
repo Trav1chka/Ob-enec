@@ -58,17 +58,21 @@ if (modeImg) {
 
 //* Script pro Generaci slov
 let slova = [
-  "auto", "dům", "strom", "kniha", "pes", "kočka", "město", "řeka", "hora", "zahrada",
-  "slunce", "měsíc", "hvězda", "voda", "oheň", "vítr", "země", "kolo", "vlak", "letadlo",
-  "telefon", "počítač", "stůl", "židle", "okno", "dveře", "kuchyně", "koupelna", "postel", "boty",
-  "oblečení", "jídlo", "pití", "cukr", "sůl", "pepř", "mléko", "chléb", "máslo", "sýr",
-  "ryba", "kuře", "hovězí", "vepřové", "zelenina", "ovoce", "jablko", "banán", "pomeranč", "hroznové",
-  "auto", "vlak", "letadlo", "loď", "kolo", "motorka", "tramvaj", "autobus", "taxi", "metro",
-  "škola", "učitel", "student", "knihovna", "knihy", "učebnice", "tabule", "žák", "test", "zápisník",
-  "hudba", "zpěv", "tanec", "kytara", "buben", "klavír", "piano", "basa", "flétna", "housle",
-  "sport", "fotbal", "basketbal", "tenis", "plavání", "běh", "cyklistika", "hokej", "volejbal", "golf",
-  "zvíře", "kočka", "pes", "kráva", "kůň", "ovce", "prase", "králík", "pták", "ryba"
-];
+  "server", "router", "firewall", "protokol", "virtualizace", "kompilátor", "algoritmus", "kódování", "paměť", "procesor",
+  "grafika", "mikroprocesor", "zdroj", "chladič", "konektor", "mikrofon", "webkamera", "reproduktor", "port", "disk",
+  "kočka", "pes", "vlk", "ještěrka", "sova", "mravenec", "žába", "liška", "zajíc", "včela", "anglickoněmecký",
+  "košile", "kalhoty", "bunda", "plášť", "mikina", "tričko", "rukavice", "klobouk", "pásek", "ponožky",
+  "auto", "motocykl", "elektrokolo", "skútr", "tramvaj", "helikoptéra", "dodávka", "kabriolet", "taxi", "karavan",
+  "jablko", "hruška", "granátové", "mandarinka", "kiwi", "datle", "borůvka", "malina", "pomeranč", "broskev",
+  "mrkev", "kapusta", "celer", "batát", "křen", "ředkvička", "cuketa", "fazole", "hrášek", "dýně", "šášaboty",
+  "rododendron", "elektrostatika", "nejneobhospodařovávatelnější", "scvrnkls", "mateřídoušky", "vošouch",
+  "bagančata", "nevim", "dvanáctiválec", "bububu", "mikroprocesorový", "multitasking", "kryptografie", "rachotina",
+  "virtualizovaný", "synchronizace", "asynchronní", "binární", "dekódování", "enkapsulace", "hashování", "infrastruktura",
+  "konfigurace", "modulární", "optimalizace", "paralelní", "rekurzivní", "segmentace", "tokenizace", "virtualizace",
+  "webový", "zabezpečení", "algoritmický", "automatizace", "datový", "elektronický", "filtrace", "generování", "hardwarový",
+  "implementace", "jednotkový", "kompatibilita", "logický", "monitorování", "navigace", "operační", "programový", "bídák",
+  "qubitový", "redukce", "sériový", "transakce", "uživatelský", "verifikace", "webová", "zálohování", "ahoj", "rákosníček"
+  ];
 let slovo;
 let pocetPismen;
 let pocetOdhadnuti = 0;
@@ -100,7 +104,6 @@ function initGame() {
     const pismeno = document.createElement("p"); // vytvareni odstavce pro pismeno
     pismeno.id = "pismeno" + String(i + 1);
     pismeno.innerHTML = slovo[i];
-    pismeno.style.fontSize = "100px";
     if (!dark_mode) {
       pismeno.style.color = "rgb(230, 230, 230)"; // zmena barvy pisma abych ho nebylo videt
     } else {
@@ -119,7 +122,7 @@ function initGame() {
     time = 0;
     clearInterval(timer);
     highScore = localStorage.getItem("bestScore");
-    document.getElementById("High_Score").innerHTML = "High score: " + Math.floor(highScore);
+    document.getElementById("High_Score").innerHTML = "Nejvyšší skóre: " + Math.floor(highScore);
     timer = setInterval(calcScore, 30);
   }
 }
@@ -127,14 +130,14 @@ function initGame() {
 function calcScore() {
   score = score - 1;
   time += 0.031;
-  document.getElementById("time").innerHTML = "Time: " + Math.floor(time) + "s";
-  document.getElementById("score").innerHTML = "Score: " + Math.floor(score);
+  document.getElementById("time").innerHTML = "Čas: " + Math.floor(time) + "s";
+  document.getElementById("score").innerHTML = "Skóre: " + Math.floor(score);
   if (score == 0) {
     pocetChybnychOdhadnuti = 0;
     pocetOdhadnuti = 0;
     odhadovanePismena = [];
     time = 0;
-    window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
+    window.alert("Ｐｒｏｈｒａｌ   ｓｉ！\n\nSlovo co jsi hádal: " + slovo);
     try {
       localStorage.getItem("bestScore");
     } catch {
@@ -182,7 +185,7 @@ function letter(letter) { // funkce pro odhad pismena
       }
     }
   } else {
-    pocetChybnychOdhadnuti++; // zvyseni pocet hybnych odhadnuti
+    pocetChybnychOdhadnuti++; // zvyseni pocet chybnych odhadnuti
     const image = document.getElementById("obesenec");
     image.src = "./graphics/obesenec/stage" + String(pocetChybnychOdhadnuti) + ".png"; // zmena obrazku
     if (pocetChybnychOdhadnuti == 8) {
@@ -191,7 +194,7 @@ function letter(letter) { // funkce pro odhad pismena
         pocetOdhadnuti = 0;
         odhadovanePismena = [];
         time = 0;
-        window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
+        window.alert("Ｐｒｏｈｒａｌ   ｓｉ！\n\nSlovo co jsi hádal: " + slovo);
         try {
           localStorage.getItem("bestScore");
         } catch {
