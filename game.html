@@ -18,13 +18,13 @@
             <img src="./graphics/art/icon.png" alt="logo oběšence" id="ikona">
             <h1>OBĚŠENEC</h1>
         </a>
-        <div id="mode">
+        <div id="mode"> <!--DARK MODE-->
             <img src="./graphics/icons/lightmode-switch.png" alt="Přepnutí na tmavý režim" onclick="mode()">
         </div>
     </header>
     
     <main>
-        <div id="tutorial">         
+        <div id="tutorial"> <!-- T U T O R I A L-->
             <div id="zavrit">
                 <button onclick="tutorial(false)"><img src="./graphics/pismena/X.png" alt="zavřít okno"></button>
             </div>
@@ -32,21 +32,21 @@
                 <img src="./graphics/art/logo.png" alt="logo oběšence" id="logo_tut">
             </div>
             <div>
-                <p>Vítej ve hře OBĚŠENEC! Samozřejmě víme, jak je těžké se na stránkách orientovat, proto jsme ti udělali tutorial, jak na to! Zachvíli uvidíš vlevo nahoře tři malé ikonky. První vypadá jako oprátka <img src="./graphics/icons/reset.png" alt="oprátka" class="icon_tut">, druhý jako kolečko <img src="./graphics/icons/restart.png" alt="restart" class="icon_tut"> a třetí jako otazník <img src="./graphics/icons/help.png" alt="tutorial" class="icon_tut">. Pomocí oprátky se vzdáš, s kolečkem restaruješ hru, to znamená, že ti vytvoříme další slovo na uhádnutí! A otazník ti znovu otevře tento tutorial. Tak a teď se dostáváme k samotné hře, vpravo budeš mít klávesnici a slovo na uhádnutí. Na klávesnici můžes klikat a hádat písmena, jestli jseš líný na pohybování myši, tak můžeš psát i na tvojí klávesnici. Vlevo máš svého oběšence, máš celkově jen 8 pokusů ho zachránit! Tak hodně štěstí a jdi na to!</p>
+                <p>Vítej ve hře OBĚŠENEC! Samozřejmě víme, jak je těžké se na stránkách orientovat, proto jsme ti udělali tutorial, jak na to! Zachvíli uvidíš vlevo nahoře tři malé ikonky. První vypadá jako oprátka <img src="./graphics/icons/reset.png" alt="oprátka" class="icon_tut">, druhý jako kolečko <img src="./graphics/icons/restart.png" alt="restart" class="icon_tut"> a třetí jako otazník <img src="./graphics/icons/help.png" alt="tutorial" class="icon_tut">. Pomocí oprátky se vzdáš, s kolečkem restaruješ hru, to znamená, že ti vytvoříme další slovo na uhádnutí! A otazník ti znovu otevře tento tutorial. Tak a teď se dostáváme k samotné hře, vpravo budeš mít klávesnici, timer, skóre a High score. Na klávesnici můžes klikat a hádat písmena, jestli jseš líný na pohybování myši, tak můžeš psát i na tvojí klávesnici. timer ti ukazuje, jak rychle si uhádl slovo. Skóre ti vyhodnotíme podle timeru. High score ti ukazuje nejvyšší skóre. Vlevo máš svého oběšence, máš celkově jen 8 pokusů ho zachránit! Pod oběšencem máš slovo na uhádnutí. Tak hodně štěstí a jdi na to!</p>
             </div>
         </div>
-        <nav id="surrender">
+        <nav id="surrender"> <!-- S U R R E N D E R -->
             <a href="./index.html"><img src="./graphics/icons/reset.png" alt="Vzdát to"></a>
             <button id="restartbtn" onclick="initGame()"><img src="./graphics/icons/restart.png" alt="restart"></button>
             <button id="tutorialbtn" onclick="tutorial(true)"><img src="./graphics/icons/help.png" alt="tutorial"></button>
         </nav>
         
-        <div id="GAME">
+        <div id="GAME"> <!-- OBĚŠENEC-->
             <div id="sibenice">
                 <img src="./graphics/obesenec/stage0.png" alt="oběšenec" id="obesenec">
             </div>
             
-            <div id="LettersWords">
+            <div id="LettersWords"> <!-- L E T T E R S AND CSH -->
                 <div id="CSH">
                     <p id="time"></p>
                     <p id="score"></p>
@@ -108,13 +108,13 @@
             </div>
             
         </div>
-        <div id="slovo">
+        <div id="slovo"> <!-- SLOVO NA UHÁDNUTÍ-->
                 
-        </div>
+                </div>
     </main>
    
     <footer>
-        <div id="GHrepo">
+        <div id="GHrepo"> <!-- ODKAZ NA GITHUB-->
             <a href="https://github.com/Trav1chka/Ob-enec"><img src="./graphics/icons/GitHub.png" alt="Odkaz na github"></a> 
         </div> 
         <div id="info-box">
