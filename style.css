@@ -109,7 +109,7 @@ h3 {
 /** Tutorial **/
 #tutorial{
     width: 75%;
-    display: block;
+    display: none;
     margin: auto;
     padding: 20px;
     background-color: var(--background-color);
