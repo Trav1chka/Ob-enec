@@ -92,7 +92,7 @@ function initGame() {
   slovo = slova[Math.floor(Math.random() * slova.length)]; // vyber nahodneho slova
   pocetPismen = slovo.length;
   const divSlovo = document.getElementById("slovo");
-  divSlovo.innerHTML = null; // clear previous content if any
+  divSlovo.innerHTML = "";
   for (let i = 0; i < pocetPismen; i++) {
     const div = document.createElement("div"); // vytvareni divu pro pismeno a line
     div.className = "letters";
@@ -115,17 +115,18 @@ function initGame() {
     div.appendChild(pismeno);
     div.appendChild(line);
     divSlovo.appendChild(div); // pridani pismena a line do divu se vsema pismeny
-    score = 1000
-    clearInterval(timer)
+    score = 1000;
+    time = 0;
+    clearInterval(timer);
     highScore = localStorage.getItem("bestScore");
     document.getElementById("High_Score").innerHTML = "High score: " + Math.floor(highScore);
-    timer = setInterval(calcScore, 30)
+    timer = setInterval(calcScore, 30);
   }
 }
 
 function calcScore() {
-  score = score - 1
-  time += 0.031
+  score = score - 1;
+  time += 0.031;
   document.getElementById("time").innerHTML = "Time: " + Math.floor(time) + "s";
   document.getElementById("score").innerHTML = "Score: " + Math.floor(score);
   if (score == 0) {
@@ -135,11 +136,11 @@ function calcScore() {
     time = 0;
     window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
     try {
-      localStorage.getItem("bestScore")
+      localStorage.getItem("bestScore");
     } catch {
       localStorage.setItem("bestScore", 0);
     }
-    clearInterval(timer)
+    clearInterval(timer);
     initGame(); // reset hry
   }
 }
@@ -148,15 +149,15 @@ function letter(letter) { // funkce pro odhad pismena
   letter = letter.toLowerCase(); // prevedeni na mala pismena
   if (slovo.includes(letter)) { // pokud pismeno je v slove
     if (odhadovanePismena.includes(letter)) {
-      return
+      return;
     }
     for (let i = 0; i < slovo.length; i++) { // prochazeni slova
       if (slovo[i] == letter) {
         const pismeno = document.getElementById("pismeno" + String(i + 1));
         if (!dark_mode) { // zmena barvy pisma podle rezimu abych ho nebylo videt
-          pismeno.style.color = "rgb(40, 40, 40)"
+          pismeno.style.color = "rgb(40, 40, 40)";
         } else {
-          pismeno.style.color = "rgb(230, 230, 230)"
+          pismeno.style.color = "rgb(230, 230, 230)";
         }
         pocetOdhadnuti++; // zvyseni pocet odhadnuti
         odhadovanePismena.push(letter);
@@ -174,7 +175,7 @@ function letter(letter) { // funkce pro odhad pismena
             } catch(error) {
               localStorage.setItem("bestScore", score);
             }
-            clearInterval(timer)
+            clearInterval(timer);
             initGame(); // reset hry
           }, 100); // timeout 100 milisekund abych barva textu stihla se zmenit
         }
@@ -192,11 +193,11 @@ function letter(letter) { // funkce pro odhad pismena
         time = 0;
         window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
         try {
-          localStorage.getItem("bestScore")
+          localStorage.getItem("bestScore");
         } catch {
           localStorage.setItem("bestScore", 0);
         }
-        clearInterval(timer)
+        clearInterval(timer);
         initGame(); // reset hry
       }, 100);
     }
@@ -215,12 +216,14 @@ function tutorial(show) {
     tutorial.style.display = "block";
   } else {
     tutorial.style.display = "none";
+    initGame();
   }
 }
 
 if (localStorage.getItem("game") == "true") {
-  if (Number(localStorage.getItem("pocetOtevreni")) > 1 ) {
+  if (Number(localStorage.getItem("pocetOtevreni")) > 1) {
+    initGame();
+  } else {
     tutorial(true);
   }
-  initGame(); // zacatek hry
 }
