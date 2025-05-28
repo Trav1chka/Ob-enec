@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="./graphics/art/favicon-16x16.png" sizes="16x16">
 </head>
 <body>
-    <header>
+    <header> 
         <a href="./index.html">
             <img src="./graphics/art/icon.png" alt="logo oběšence" id="ikona">
             <h1>OBĚŠENEC</h1>
@@ -32,24 +32,26 @@
                 <img src="./graphics/art/logo.png" alt="logo oběšence" id="logo_tut">
             </div>
             <div>
-                <p>Vítej ve hře OBĚŠENEC! Samozřejmě víme, jak je těžké se na stránkách orientovat, proto jsme ti udělali tutorial, jak na to! Zachvíli uvidíš vlevo nahoře tři malé ikonky. První vypadá jako oprátka <img src="./graphics/icons/reset.png" alt="oprátka" class="icon_tut">, druhý jako kolečko <img src="./graphics/icons/restart.png" alt="restart" class="icon_tut"> a třetí jako otazník <img src="./graphics/icons/help.png" alt="tutorial" class="icon_tut">. Pomocí oprátky se vzdáš, s kolečkem restaruješ hru, to znamená, že ti vytvoříme další slovo na uhádnutí! A otazník ti znovu otevře tento tutorial. Tak a teď se dostáváme k samotné hře, vpravo budeš mít klávesnici, timer, skóre a High score. Na klávesnici můžes klikat a hádat písmena, jestli jseš líný na pohybování myši, tak můžeš psát i na tvojí klávesnici. timer ti ukazuje, jak rychle si uhádl slovo. Skóre ti vyhodnotíme podle timeru. High score ti ukazuje nejvyšší skóre. Vlevo máš svého oběšence, máš celkově jen 8 pokusů ho zachránit! Pod oběšencem máš slovo na uhádnutí. Tak hodně štěstí a jdi na to!</p>
+                <p>Vítej ve hře OBĚŠENEC! Víme, že je někdy těžké se na stránkách zorientovat, proto jsme pro tebe připravili stručný tutorial, jak na to! Za chvíli uvidíš vlevo nahoře tři malé ikonky. První vypadá jako oprátka (<img src="./graphics/icons/reset.png" alt="oprátka" class="icon_tut">), druhá jako kolečko (<img src="./graphics/icons/restart.png" alt="restart" class="icon_tut">) a třetí jako otazník (<img src="./graphics/icons/help.png" alt="tutorial" class="icon_tut">). Pomocí oprátky se vzdáš, s kolečkem restartuješ hru — to znamená, že dostaneš nové slovo k uhodnutí! A otazník ti znovu otevře tento tutorial. A teď k samotné hře! Vpravo budeš mít klávesnici, časovač, skóre a High Score. Na klávesnici můžeš klikat a hádat písmena, nebo je jednoduše psát na své klávesnici. Časovač ti ukazuje, jak rychle jsi uhodl slovo. Skóre se vypočítává podle toho, jak rychle jsi to zvládl. High Score ti ukáže tvé nejlepší skóre. Vlevo uvidíš oběšence — máš celkem 8 pokusů, než bude pozdě! Pod oběšencem je slovo, které máš za úkol uhodnout. Ve hře se objevují slova z různých oblastí, jako je IT, zvířata, oblečení, doprava, ovoce, zelenina, nebo i složitější odborné termíny z vědy, techniky a programování. Navíc se tu ukrývá i pár opravdu těžkých slov, která prověří tvoje schopnosti na maximum!Tak hodně štěstí — a směle do toho!</p>
             </div>
         </div>
-        <nav id="surrender"> <!-- S U R R E N D E R -->
+        <nav id="surrender"> <!-- V Z D Á T  T O -->
             <a href="./index.html"><img src="./graphics/icons/reset.png" alt="Vzdát to"></a>
             <button id="restartbtn" onclick="initGame()"><img src="./graphics/icons/restart.png" alt="restart"></button>
             <button id="tutorialbtn" onclick="tutorial(true)"><img src="./graphics/icons/help.png" alt="tutorial"></button>
         </nav>
         
-        <div id="GAME"> <!-- OBĚŠENEC-->
+        <div id="GAME"> <!-- O B Ě Š E N E C-->
             <div id="sibenice">
                 <img src="./graphics/obesenec/stage0.png" alt="oběšenec" id="obesenec">
             </div>
             
-            <div id="LettersWords"> <!-- L E T T E R S AND CSH -->
+            <div id="LettersWords"> <!-- L E T T E R S  &   C S H -->
                 <div id="CSH">
                     <p id="time"></p>
+                    <p>|</p>
                     <p id="score"></p>
+                    <p>|</p>
                     <p id="High_Score"></p>
                 </div>
                 <div id="pismena">
@@ -103,18 +105,15 @@
                         <button onclick="letter('M')"><img src="./graphics/pismena/M.png" alt="M"></button>
                     </div>
                 </div>
-                
-                
             </div>
             
         </div>
-        <div id="slovo"> <!-- SLOVO NA UHÁDNUTÍ-->
-                
-                </div>
+        <div id="slovo"> <!-- S L O V O  N A  U H A D N U T Í-->      
+        </div>
     </main>
    
     <footer>
-        <div id="GHrepo"> <!-- ODKAZ NA GITHUB-->
+        <div id="GHrepo"> <!-- G I T H U B-->
             <a href="https://github.com/Trav1chka/Ob-enec"><img src="./graphics/icons/GitHub.png" alt="Odkaz na github"></a> 
         </div> 
         <div id="info-box">
