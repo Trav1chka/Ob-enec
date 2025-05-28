@@ -57,15 +57,34 @@ if (modeImg) {
 //! game.html //
 
 //* Script pro Generaci slov
-let slova = ["net", "idi", "nahui", "ja", "sosu", "bibu", "da", "mne", "pojui"]; // seznam slov, ktere bude uzivatel odhadovat
+let slova = [
+  "auto", "dům", "strom", "kniha", "pes", "kočka", "město", "řeka", "hora", "zahrada",
+  "slunce", "měsíc", "hvězda", "voda", "oheň", "vítr", "země", "kolo", "vlak", "letadlo",
+  "telefon", "počítač", "stůl", "židle", "okno", "dveře", "kuchyně", "koupelna", "postel", "boty",
+  "oblečení", "jídlo", "pití", "cukr", "sůl", "pepř", "mléko", "chléb", "máslo", "sýr",
+  "ryba", "kuře", "hovězí", "vepřové", "zelenina", "ovoce", "jablko", "banán", "pomeranč", "hroznové",
+  "auto", "vlak", "letadlo", "loď", "kolo", "motorka", "tramvaj", "autobus", "taxi", "metro",
+  "škola", "učitel", "student", "knihovna", "knihy", "učebnice", "tabule", "žák", "test", "zápisník",
+  "hudba", "zpěv", "tanec", "kytara", "buben", "klavír", "piano", "basa", "flétna", "housle",
+  "sport", "fotbal", "basketbal", "tenis", "plavání", "běh", "cyklistika", "hokej", "volejbal", "golf",
+  "zvíře", "kočka", "pes", "kráva", "kůň", "ovce", "prase", "králík", "pták", "ryba"
+];
 let slovo;
 let pocetPismen;
 let pocetOdhadnuti = 0;
-let pocetHybnychOdhadnuti = 0;
+let pocetChybnychOdhadnuti = 0;
 let odhadovanePismena = [];
+var timer;
+let time = 0;
+let highScore;
 
 function play() {
   localStorage.setItem("game", true) // pro zacatek hry bez tlacitka
+  try {
+    localStorage.setItem("pocetOtevreni", Number(localStorage.getItem("pocetOtevreni")) + 1);
+  } catch(error) {
+    localStorage.setItem("pocetOtevreni", 1);
+  }
   window.location.href = "game.html"; // prepnuti na game.html
 }
 
@@ -96,6 +115,32 @@ function initGame() {
     div.appendChild(pismeno);
     div.appendChild(line);
     divSlovo.appendChild(div); // pridani pismena a line do divu se vsema pismeny
+    score = 1000
+    clearInterval(timer)
+    highScore = localStorage.getItem("bestScore");
+    document.getElementById("High_Score").innerHTML = "High score: " + Math.floor(highScore);
+    timer = setInterval(calcScore, 30)
+  }
+}
+
+function calcScore() {
+  score = score - 1
+  time += 0.031
+  document.getElementById("time").innerHTML = "Time: " + Math.floor(time) + "s";
+  document.getElementById("score").innerHTML = "Score: " + Math.floor(score);
+  if (score == 0) {
+    pocetChybnychOdhadnuti = 0;
+    pocetOdhadnuti = 0;
+    odhadovanePismena = [];
+    time = 0;
+    window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
+    try {
+      localStorage.getItem("bestScore")
+    } catch {
+      localStorage.setItem("bestScore", 0);
+    }
+    clearInterval(timer)
+    initGame(); // reset hry
   }
 }
 
@@ -117,36 +162,65 @@ function letter(letter) { // funkce pro odhad pismena
         odhadovanePismena.push(letter);
         if (pocetOdhadnuti == pocetPismen) {
           setTimeout(() => {
-            pocetHybnychOdhadnuti = 0;
+            pocetChybnychOdhadnuti = 0;
             pocetOdhadnuti = 0;
+            odhadovanePismena = [];
+            time = 0;
             window.alert("Ｖｙｈｒａｌ   ｓｉ！");
+            try {
+              if (Number(localStorage.getItem("bestScore")) < score) {
+                localStorage.setItem("bestScore", score);
+              }
+            } catch(error) {
+              localStorage.setItem("bestScore", score);
+            }
+            clearInterval(timer)
             initGame(); // reset hry
           }, 100); // timeout 100 milisekund abych barva textu stihla se zmenit
         }
       }
     }
   } else {
-    pocetHybnychOdhadnuti++; // zvyseni pocet hybnych odhadnuti
+    pocetChybnychOdhadnuti++; // zvyseni pocet hybnych odhadnuti
     const image = document.getElementById("obesenec");
-    image.src = "./graphics/obesenec/stage" + String(pocetHybnychOdhadnuti) + ".png"; // zmena obrazku
-    if (pocetHybnychOdhadnuti == 8) {
+    image.src = "./graphics/obesenec/stage" + String(pocetChybnychOdhadnuti) + ".png"; // zmena obrazku
+    if (pocetChybnychOdhadnuti == 8) {
       setTimeout(() => {
-        pocetHybnychOdhadnuti = 0;
+        pocetChybnychOdhadnuti = 0;
         pocetOdhadnuti = 0;
+        odhadovanePismena = [];
+        time = 0;
         window.alert("Ｐｒｏｈｒａｌ   ｓｉ！");
+        try {
+          localStorage.getItem("bestScore")
+        } catch {
+          localStorage.setItem("bestScore", 0);
+        }
+        clearInterval(timer)
         initGame(); // reset hry
       }, 100);
     }
   }
 }
-
-letters = ["a", "á", "b", "c", "č", "d", "ď", "e", "é", "ě", "f", "g", "h", "i", "í", "j", "k", "l", "m", "n", "ň", "o", "ó", "p", "q", "r", "ř", "s", "š", "t", "ť", "u", "ú", "ů", "v", "w", "x", "y", "ý", "z", "ž"];
+letters = ["a", "á", "b", "c", "č", "d", "ď", "e", "é", "ě", "f", "g", "h", "i", "í", "j", "k", "l", "m", "n", "ň", "o", "ó", "p", "q", "r", "ř", "s", "š", "t", "ť", "u", "ú", "ů", "v", "w", "x", "y", "ý", "z", "ž"];
 document.addEventListener('keydown', function(event) { // nacteni klaves z klavesnice
   if (letters.includes(event.key.toLowerCase())) {
     letter(event.key.toLowerCase()); // odhad pismena
   }
 });
 
+function tutorial(show) {
+  const tutorial = document.getElementById("tutorial");
+  if (show) {
+    tutorial.style.display = "block";
+  } else {
+    tutorial.style.display = "none";
+  }
+}
+
 if (localStorage.getItem("game") == "true") {
+  if (Number(localStorage.getItem("pocetOtevreni")) > 1 ) {
+    tutorial(true);
+  }
   initGame(); // zacatek hry
 }
