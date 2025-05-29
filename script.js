@@ -120,6 +120,7 @@ function initGame() {
     divSlovo.appendChild(div); // pridani pismena a line do divu se vsema pismeny
     score = 1000;
     time = 0;
+    pocetChybnychOdhadnuti = 0;
     clearInterval(timer);
     highScore = localStorage.getItem("bestScore");
     document.getElementById("High_Score").innerHTML = "Nejvyšší skóre: " + Math.floor(highScore);
