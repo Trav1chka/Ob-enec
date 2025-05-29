@@ -72,7 +72,7 @@ let slova = [
   "webový", "zabezpečení", "algoritmický", "automatizace", "datový", "elektronický", "filtrace", "generování", "hardwarový",
   "implementace", "jednotkový", "kompatibilita", "logický", "monitorování", "navigace", "operační", "programový", "bídák",
   "qubitový", "redukce", "sériový", "transakce", "uživatelský", "verifikace", "webová", "zálohování", "ahoj", "rákosníček"
-  ];
+  ]; // seznam slov
 let slovo;
 let pocetPismen;
 let pocetOdhadnuti = 0;
@@ -123,22 +123,22 @@ function initGame() {
     clearInterval(timer);
     highScore = localStorage.getItem("bestScore");
     document.getElementById("High_Score").innerHTML = "Nejvyšší skóre: " + Math.floor(highScore);
-    timer = setInterval(calcScore, 30);
+    timer = setInterval(calcScore, 30); // volání funkce každých 30 milisekund 
   }
 }
 
-function calcScore() {
+function calcScore() { // funkce pro počítání času a skóre 
   score = score - 1;
   time += 0.031;
-  document.getElementById("time").innerHTML = "Čas: " + Math.floor(time) + "s";
-  document.getElementById("score").innerHTML = "Skóre: " + Math.floor(score);
-  if (score == 0) {
+  document.getElementById("time").innerHTML = "Čas: " + Math.floor(time) + "s"; // obnovení časovačů 
+  document.getElementById("score").innerHTML = "Skóre: " + Math.floor(score); // obnovení skóre 
+  if (score == 0) { // po 30 sekundách skóre bude 0
     pocetChybnychOdhadnuti = 0;
     pocetOdhadnuti = 0;
     odhadovanePismena = [];
     time = 0;
     window.alert("Ｐｒｏｈｒａｌ   ｓｉ！\n\nSlovo co jsi hádal: " + slovo);
-    try {
+    try { // zkoušení pro první uložení 
       localStorage.getItem("bestScore");
     } catch {
       localStorage.setItem("bestScore", 0);
@@ -163,7 +163,7 @@ function letter(letter) { // funkce pro odhad pismena
           pismeno.style.color = "rgb(230, 230, 230)";
         }
         pocetOdhadnuti++; // zvyseni pocet odhadnuti
-        odhadovanePismena.push(letter);
+        odhadovanePismena.push(letter); // přidání písmena do seznamu odhadnutých písmen 
         if (pocetOdhadnuti == pocetPismen) {
           setTimeout(() => {
             pocetChybnychOdhadnuti = 0;
@@ -171,7 +171,7 @@ function letter(letter) { // funkce pro odhad pismena
             odhadovanePismena = [];
             time = 0;
             window.alert("Ｖｙｈｒａｌ   ｓｉ！");
-            try {
+            try { // zkoušení pro první uložení 
               if (Number(localStorage.getItem("bestScore")) < score) {
                 localStorage.setItem("bestScore", score);
               }
@@ -213,18 +213,18 @@ document.addEventListener('keydown', function(event) { // nacteni klaves z klave
   }
 });
 
-function tutorial(show) {
+function tutorial(show) { // funkce pro zobrazení tutoriálů 
   const tutorial = document.getElementById("tutorial");
   if (show) {
     tutorial.style.display = "block";
   } else {
     tutorial.style.display = "none";
-    initGame();
+    initGame(); // když zavíráme tutoriál, začínáme nebo restartujeme hru
   }
 }
 
 if (localStorage.getItem("game") == "true") {
-  if (Number(localStorage.getItem("pocetOtevreni")) > 1) {
+  if (Number(localStorage.getItem("pocetOtevreni")) > 1) { // když uživatel poprve otevři stránku, zobrazí mu tutoriál 
     initGame();
   } else {
     tutorial(true);
